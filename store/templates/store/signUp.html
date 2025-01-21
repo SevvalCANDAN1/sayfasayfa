@@ -1,0 +1,21 @@
+{% extends "store/layout-user.html" %}
+
+{% block body%}
+    
+    <div class="grid-item-5">
+        <div class="form" style="display: flex; align-items: center; justify-items: center;  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); border-radius: 10px; padding: 15px; width: 600px; height: 600px;"> 
+            <h1>Kullanıcı Bilgileri:</h1>
+            <br>
+            <form action="{% url 'signUp' %}" method="post" >
+                {% csrf_token %}
+                <input type="text" name = "username" placeholder="Username" ><br>
+                <input type="text" name = "fname" placeholder="Name" ><br>
+                <input type="text" name="lname" placeholder="Surname" ><br>
+                <input type="text" name="mail" placeholder="e-mail" ><br>
+                <input type="password" name = "password" placeholder="Password" ><br>
+                <input type="submit" value="Kayıt Ol"><br>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

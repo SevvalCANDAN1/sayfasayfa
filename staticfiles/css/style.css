@@ -1,0 +1,103 @@
+body, html{
+
+    height: 100%;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 10px auto  10px;
+    grid-template-rows: 100px auto auto auto auto ;
+    height: 100%;
+    
+}
+
+.grid-item-1 {
+    grid-row: 2 / 7; 
+    grid-column: 1/2;
+    background-color: black;
+
+}
+
+.grid-item-2 {
+    grid-column: 1 / 4; /* 1'den başlayıp tüm sütunlara yayılır */
+    grid-row: 1 / 2; /* İlk satırda yer alır */
+    background-color: black;
+    border-radius: 15px 15px 0 0;
+
+
+}
+.grid-item-2 input[type="text"] {
+    width: 100%; /* Metin kutusunun genişliği */
+    padding: 5px; 
+    border-radius: 5px; /* Köşeleri yuvarla */
+    border: 1px solid white; /* Beyaz kenarlık */
+    color: black; /* Yazı rengi */
+}
+.rounded-input {
+    width: 250px; /* Genişlik */
+    height: 10px; /* Yükseklik */
+    padding: 10px;
+    font-size: 16px; /* Metin boyutu */
+    border-radius: 15px; /* Köşe yuvarlama */
+    padding-left: 40px; 
+    border: 1px solid #ccc; /* Kenarlık */
+    border-radius: 20px; /* Köşeleri yuvarlat */
+    background-image: url('https://cdn-icons-png.flaticon.com/512/54/54481.png'); /* Arama ikonu */
+    background-size: 20px 20px; /* İkon boyutu */
+    background-repeat: no-repeat; /* İkonu tekrar etme */
+    background-position: 10px center; /* İkonun konumu */
+}
+.grid-item-2 a{
+    color:white;
+    text-decoration: none;
+}
+.grid-item-3 {
+    grid-area: 2/2/ span 5/ span 1;
+    display: flex; /* Flexbox etkinleştirme */
+    justify-content: center; /* Yatay merkezleme */
+    align-items: center; /* Dikey merkezleme */
+    margin: 50px;
+    background-image: url('image/book-icon.jpg'); /* Resmin URL'sini buraya ekleyin */
+    background-repeat: repeat; /* Resmin tekrar etmesi */
+    background-size: 40px 40px;
+    border-radius: 15px;
+}
+
+.grid-item-3 input[type="text"], input[type="password"]{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.grid.grid-item-3 input[type="submit"]{
+    width: 35%;
+    height: 35%;
+    margin: 50px;
+    padding: 20px;
+    border: 1;
+    border-radius: 15px;
+    background-color: black;
+}
+.grid-item-3 table{
+    border: 0;
+    width: 300px;
+    height: 75px;
+}
+.grid-item-3 td{
+    border: 1;
+    border-radius: 15px;
+    align-items: center;
+}
+
+.grid-item-4 {
+    grid-column: 3 / 4; 
+    grid-row: 2 / 7; 
+    background-color: black;
+}
+.grid-item-5 {
+    grid-column: 1 / 4; 
+    grid-row: 6 / 7; 
+    background-color: black;
+    align-self: end;
+}

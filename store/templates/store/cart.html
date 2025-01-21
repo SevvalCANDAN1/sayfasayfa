@@ -1,0 +1,200 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <title>{{ genre.name | title }}</title>
+        <link rel="icon" type="image/x-icon" href="image/logo.png">
+        <link rel="stylesheet" href="{% static 'store/cart_style.css' %}">
+        <script src="{% static 'store/script.js'%}"></script>
+    </head>
+    <body>
+        <div class="grid-container">
+            <div class="grid-item-1">.</div>
+            <div  class="grid-item-2">
+                <table  align="center" cellspacing="30">
+                    <tr>
+                        <td >
+                            <a href="{% url 'home' %}">
+                                <img id="main-category" src="{{ logo.photo.url }}" height="30" width="70" style="border-radius: 5px;">
+                            </a>
+                        </td>
+                        <td >
+                            <form method="get" action="{% url 'search' %}">
+                                <div style="display: grid; grid-template-areas: 'rounded-input button'; grid-template-columns: 3fr 1fr; ">
+                                    <input type="text" name="word" class="rounded-input" style="grid-area: rounded-input;" placeholder="Search books, categories...">
+                                    <button class="button" type="submit" style="grid-area: button; ">Arama</button>
+                                </div>
+                                
+                            </form>
+                        </td>
+                        {% for category in categories %}
+                            <td><a href="{% url 'category_page' category.name %}">{{ category.name|upper }}</a></td>
+                        {% endfor %}
+                        <td><a href="{% url 'authors_page' %}">YAZARLAR</a></td>
+                        <td><a href="{% url 'publishing_houses_page' %}">YAYINEVLERİ</a></td>
+                        
+                        <td >
+                            <a href="{% url 'cart_page' %}">
+                                <img src="{{ cart.photo.url }}" width="25" height="25">
+                            </a>
+                        </td>
+                        <td >
+                            <a href="{% url 'user' %}">
+                                <img src="{{ user_icon.photo.url }}" width="25" height="25">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--<div  class="vertical-line-left"></div>-->
+            <div class="grid-item-3">
+                <table>
+                    <tr>
+                        <td onclick="toggleRows('yazar')"><a href="{% url 'authors_page' %}">Yazar</a></td>
+                    </tr>
+                    <!--Yazar kategorisinin alt satırları-->
+                    {% for author in authors %}
+                        <tr class="hidden-row yazar" >
+                            <td><a href="{% url 'author_page' author.name %}">{{ author.name|title}}</a></td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td onclick="toggleRows('yayinevi')"><a href="{% url 'publishing_houses_page' %}">Yayinevi</a></td>
+                    </tr>
+                    <!--Yayınevleri kategorisinin alt satırları-->
+                    {% for publishing_house in publishing_houses %}
+                        <tr class="hidden-row yayinevi" >
+                            <td><a href="{% url 'publishing_house_page' publishing_house.name %}">{{ publishing_house.name|title }}</a></td>
+                        </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <td onclick="toggleRows('turler')">Türler</td>
+                    </tr>
+                    <!--Türler kategorisinin alt satırları-->
+                    {% for genre in genres %}
+                        <tr class="hidden-row turler" >
+                            <td><a href="{% url 'genre_page' genre.name %}">{{ genre.name | title}}</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="grid-item-4">ALIŞVERİŞ SEPETİ</div>
+            <div class="grid-item-5">
+                <table style=
+                    "width: auto;
+                    border-spacing: 20px;
+                    text-align: center; /* İçerik ortalansın */
+                    padding: 10px; ">
+                    <tr>
+                        {% if cart_items %}
+                            <!-- Sepetteki öğeleri listele -->
+                            <table >
+                                <tr>
+                                    <td>Kitap Resmi:</td>
+                                    <td>Kitap Adı:</td>
+                                    <td>Kitap Sayısı: </td>
+                                    <td>Fiyat:</td>
+                                </tr>
+                                {% for item in cart_items %}
+                                    <tr>
+                                        <td><img src="{{ item.book.photo.url }}" alt="{{ item.book.book_name }} "></td>
+                                        <td>{{ item.book.book_name }}</td>
+                                        
+                                        <td>
+                                            <div style="display: grid; 
+                                                        grid-template-areas: 'eksi miktar arti'; 
+                                                        grid-template-columns: auto auto auto; 
+                                                        align-items: center; 
+                                                        gap: 5px;">
+                                                <!-- - Button -->
+                                                <form action="{% url 'delete_to_cart' item.book.id %}" method="post" style="grid-area: eksi; margin: 0; display: inline;  text-align: center;">
+                                                    {% csrf_token %}
+                                                    <button type="submit" style="grid-area: eksi; 
+                                                                background-color: gray; 
+                                                                border-radius: 5px; 
+                                                                height: 20px; 
+                                                                width: 20px; 
+                                                                text-align: center; 
+                                                                border: none;">-</button>
+                                                </form>
+                                                <!-- Quantity Display -->
+                                                <span style="grid-area: miktar; 
+                                                             font-size: 14px; 
+                                                             text-align: center;">{{ item.quantity }}</span>
+                                                
+                                                <!-- + Button in Form -->
+                                                <form action="{% url 'add_to_cart' item.book.id %}" method="post" style="grid-area: arti; margin: 0; display: inline;  text-align: center;">
+                                                    {% csrf_token %}
+                                                    <button type="submit" style="background-color: gray; 
+                                                                                 border-radius: 5px; 
+                                                                                 height: 20px; 
+                                                                                 width: 20px; 
+                                                                                 text-align: center; 
+                                                                                 border: none;">+</button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                        
+                                        
+                                        <td>{{ item.total_price }}</td>
+                                    </tr>
+                            {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td><b>Sepetinizde Ürün Bulunmamaktadır.</b></td>
+                            </tr>
+                            {% endif %}
+                        </table> 
+                        
+                    </table>
+                </div>  
+                        <div class="grid-item-6">
+                            
+                            <form action="{% url 'order' %}" method="post" style="max-width: 400px; margin: 20px 40px 20px auto; text-align: left;">
+                                <h2>Sipariş İçin Gerekli Bilgiler: </h2>
+                                {% csrf_token %}
+                                <div style="margin-bottom: 10px;">
+                                    <input type="text" name="adres" placeholder="Adres" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                                </div>
+                                <div style="margin-bottom: 10px;">
+                                    <input type="text" name="tel" placeholder="Telefon" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                                </div>
+                                <div style="margin-bottom: 10px;">
+                                    <input type="text" name="cart-name" placeholder="Kart Sahibinin Adı" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                                </div>
+                                <div style="margin-bottom: 10px;">
+                                    <input type="text" name="cart-num" placeholder="Kart Numarası" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                                </div>
+                                <div style="margin-bottom: 10px;">
+                                    <input type="text" name="cvc" placeholder="CVC" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                                </div>
+                                <div>
+                                    <input type="submit" id="submit-btn" value="Siparişi Tamamla" style="width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; margin-left: 15px;">
+                                </div>
+                            </form>
+                        </div>
+                        {% if messages %}
+                            <script>
+                                document.getElementById("submit-btn").addEventListener("click", function(event) {
+
+                                    {% for message in messages %}
+                                        alert("{{ message|escapejs }}");
+                                    {% endfor %}
+
+                                    document.querySelector("form").submit();
+                                });
+                            </script>
+                        {% endif %}
+
+                    
+            
+            
+            <div class="grid-item-7">.</div>
+            <div class="grid-item-8">.</div>
+        </div>
+        
+    </body>
+</html>
+

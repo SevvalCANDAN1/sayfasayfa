@@ -1,0 +1,31 @@
+{% extends 'store/category_layout.html' %}
+{% block body %}
+    <div class="grid-item-4">{{ category.name | upper}}</div>
+    <div class="grid-item-5">
+        <table style=
+            "width: auto;
+            border-spacing: 20px;
+            text-align: center; /* İçerik ortalansın */
+            padding: 10px; ">
+            <tr>
+                {% for book in books %}
+                    <td style="text-align: center;">
+                        <a href="{% url 'book_page' book.id %}"><img src="{{ book.photo.url }}" alt="{{ book.book_name }} "></a>
+                        <br>
+                        <form action="{% url 'add_to_cart' book.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" id="submit-btn">Sepete Ekle</button>
+                        </form>
+                    </td>
+                    {% if forloop.counter|divisibleby:4 %}
+                        <tr></tr>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        </table>
+    
+    </div>  
+
+       
+                        
+{% endblock %}

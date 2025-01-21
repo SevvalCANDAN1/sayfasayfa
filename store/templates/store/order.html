@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <title>Yazarlar</title>
+        <link rel="icon" type="image/x-icon" href="image/logo.png">
+        <link rel="stylesheet" href="{% static 'store/yayinevleri_style.css' %}">
+        <script src="{% static 'store/script.js'%}"></script>
+    </head>
+    <body>
+        <br>
+        <div class="grid-container">
+            <div class="grid-item-1">.</div>
+            <div  class="grid-item-2">
+                <table  align="center" cellspacing="30">
+                    <tr>
+                        <td >
+                            <a href="{% url 'home' %}">
+                                <img id="main-category" src="{{ logo.photo.url }}" height="30" width="70" style="border-radius: 5px;" >
+                            </a>
+                        </td>
+                        <td >
+                            <form method="get" action="{% url 'search' %}">
+                                <div style="display: grid; grid-template-areas: 'rounded-input button'; grid-template-columns: 3fr 1fr; ">
+                                    <input type="text" name="word" class="rounded-input" style="grid-area: rounded-input;" placeholder="Search books, categories...">
+                                    <button class="button" type="submit" style="grid-area: button; ">Arama</button>
+                                </div>
+                                
+                            </form>
+                        </td>
+                        {% for category in categories %}
+                            <td><a href="{% url 'category_page' category.name %}">{{ category.name|upper }}</a></td>
+                        {% endfor %}
+                        <td><a href="{% url 'authors_page' %}">YAZARLAR</a></td>
+                        <td><a href="{% url 'publishing_houses_page' %}">YAYINEVLERİ</a></td>
+                        
+                        <td >
+                            <a href="{% url 'cart_page' %}">
+                                <img src="{{ cart.photo.url }}" width="25" height="25">
+                            </a>
+                        </td>
+                        <td >
+                            <a href="{% url 'user' %}">
+                                <img src="{{ user_icon.photo.url }}" width="25" height="25">
+                            </a>
+                        </td>
+                        <td>
+                            <a href=""><img src="{{ navigation.photo.url }}" width="25" height="25"></a>
+                            <input name="kategori" type="button">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--<div  class="vertical-line-left"></div>-->
+            <div class="grid-item-3">
+                <table>
+                    <tr>
+                        <td onclick="toggleRows('yazar')"><a href="{% url 'authors_page' %}">Yazar</a></td>
+                    </tr>
+                    <!--Yazar kategorisinin alt satırları-->
+                    {% for author in authors %}
+                        <tr class="hidden-row yazar" >
+                            <td><a href="{% url 'author_page' author.name %}">{{ author.name|title}}</a></td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td onclick="toggleRows('yayinevi')"><a href="{% url 'publishing_houses_page' %}">Yayinevi</a></td>
+                    </tr>
+                    <!--Yayınevleri kategorisinin alt satırları-->
+                    {% for publishing_house in publishing_houses %}
+                        <tr class="hidden-row yayinevi" >
+                            <td><a href="{% url 'publishing_house_page' publishing_house.name %}">{{ publishing_house.name|title }}</a></td>
+                        </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <td onclick="toggleRows('turler')">Türler</td>
+                    </tr>
+                    <!--Türler kategorisinin alt satırları-->
+                    {% for genre in genres %}
+                        <tr class="hidden-row turler" >
+                            <td><a href="{% url 'genre_page' genre.name %}">{{ genre.name | title}}</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="grid-item-5">
+                <br>
+                <br>
+                <br><br>
+                <br>
+                <br><br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h1>Siparişiniz Oluşturulmuştur</h1>
+                <img src="{{ tik.photo.url }}" alt="tik-photo" style="align-items: center; width: 400px; height: 200px;">
+                <br>
+                <br>
+                <br><br>
+                <br>
+                <br><br>
+                <br>
+                <br>
+                <br>
+                <br>
+            
+            </div>   
+            <div class="grid-item-6">.</div>
+            <div class="grid-item-7">.</div>
+        </div>
+        
+    </body>
+</html>
+

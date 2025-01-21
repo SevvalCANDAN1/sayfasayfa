@@ -1,0 +1,152 @@
+.html, body{
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    width: 100%;
+    height: 100%;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 5fr 10fr 10fr 10fr 1fr;
+    grid-template-rows: 100px 500px auto 1fr;
+    grid-template-areas:
+        "header header header header header header"
+        "l-line category logo logo logo r-line" 
+        "l-line category kitaplar kitaplar kitaplar r-line" 
+        "u-line u-line u-line u-line u-line u-line" 
+        ;
+    column-gap: 10px;
+    
+}
+
+.grid-item-1 {
+    grid-area: l-line;
+    background-color: black;
+
+}
+
+.grid-item-2 {
+    grid-area: header;
+    background-color: black;
+    border-radius: 15px 15px 0 0;
+}
+.grid-item-2 input[type="text"] {
+    width: 90%; 
+    border-radius: 5px; /* Köşeleri yuvarla */
+    border: 1px solid white; /* Beyaz kenarlık */
+    color: black; /* Yazı rengi */
+}
+.rounded-input{
+    font-size: 16px; /* Metin boyutu */
+    border-radius: 15px; /* Köşe yuvarlama */
+    border: 1px solid #ccc; /* Kenarlık */
+    background-image: url('https://cdn-icons-png.flaticon.com/512/54/54481.png'); /* Arama ikonu */
+    background-size: 20px 20px; /* İkon boyutu */
+    background-repeat: no-repeat; /* İkonu tekrar etme */
+    background-position: 10px center; /* İkonun konumu */
+}
+.grid-item-2 .button {
+    font-size: 16px; /* Metin boyutu */
+    border-radius: 10px; /* Köşe yuvarlama */
+    border: 1px solid #ccc; /* Kenarlık */
+}
+.grid-item-2 a{
+    color:white;
+    text-decoration: none;
+}
+
+.grid-item-3 {
+    grid-area: category;
+    background-color: black;
+    color: white;
+    margin-top: 30px;
+    border-radius: 15px 15px 0 0;
+    display: grid;
+    place-items: start;
+    
+
+}
+.grid-item-3 td{
+    text-align: left;
+    cursor: pointer;
+    padding: 10px;
+    
+}
+.grid-item-3 table {
+    width: 100%; /* Tablonun kapsayıcıyı doldurmasını sağlar */
+
+}
+.grid-item-3 a{
+    color: white;
+    text-decoration: none;
+}
+
+.grid-item-3 .hidden-row{
+    display: none; /*Başlangıçta gizlenmesini sağlar*/
+}
+.grid-item-3 .visible-row{
+    display: table-row; /*Görünür hal*/
+}
+.grid-item-4 {
+    grid-area: logo;
+    margin-left: 57px;
+    margin-top: 25px;
+    justify-items: center;
+    align-items: center;
+    /*margin-top: 30px;
+    margin-left: 80px;*/
+    height: 100%;
+    width: 90%;
+    /*display: grid;*/
+    place-items: center;
+    border-radius: 15px;
+    
+
+}
+
+.grid-item-5 {
+    grid-area: kitaplar;
+    margin: 20px;
+    display: grid;
+    place-items: center;
+
+}
+
+.grid-item-5 table {
+    width: 100%;
+    height: 100%;
+    border-spacing: 20px;
+    text-align: center; /* İçerik ortalansın */
+    padding: 10px; 
+    
+}
+.grid-item-5 td {
+    text-align: center; /* Resim ve buton ortalansın */
+    /*vertical-align: top; /* Dikey hizalama yapılsın */
+}
+
+.grid-item-5 button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    background-color: #444; /* İsteğe bağlı: buton arka planı */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.grid-item-5 img{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.grid-item-6 {
+    grid-area: r-line;
+    background-color: black;
+
+}
+
+.grid-item-7{
+    grid-area: u-line;
+    background-color: black;
+}

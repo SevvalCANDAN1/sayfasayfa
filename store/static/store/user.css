@@ -1,0 +1,216 @@
+html, body{
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    height: 100%;
+    width: 100%; 
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 5fr 10fr 10fr 10fr 1fr;
+    grid-template-rows: 100px auto auto auto auto auto auto auto  1fr;
+    column-gap: 10px;
+    grid-template-areas:
+        "header header header header header header"
+        "l-line category login login login r-line"
+        "l-line category login login login r-line"
+        "l-line category login login login r-line"
+        "l-line category login login login r-line"
+        "l-line category login login login r-line"
+        "l-line category login login login r-line"
+        "l-line category login login login r-line"
+        "u-line u-line u-line u-line u-line u-line"
+        ;
+        width: 100%;
+        height: 100%;
+}
+
+.grid-item-1 {
+    grid-area: l-line;
+    background-color: black;
+
+
+}
+.grid-item-2 {
+    grid-area: header;
+    background-color: black;
+    border-radius: 15px 15px 0 0;
+}
+.grid-item-2 input[type="text"] {
+    width: 90%; 
+    border-radius: 5px; /* Köşeleri yuvarla */
+    border: 1px solid white; /* Beyaz kenarlık */
+    color: black; /* Yazı rengi */
+}
+.rounded-input{
+    font-size: 16px; /* Metin boyutu */
+    border-radius: 15px; /* Köşe yuvarlama */
+    border: 1px solid #ccc; /* Kenarlık */
+    background-image: url('https://cdn-icons-png.flaticon.com/512/54/54481.png'); /* Arama ikonu */
+    background-size: 20px 20px; /* İkon boyutu */
+    background-repeat: no-repeat; /* İkonu tekrar etme */
+    background-position: 10px center; /* İkonun konumu */
+}
+.grid-item-2 .button {
+    font-size: 16px; /* Metin boyutu */
+    border-radius: 10px; /* Köşe yuvarlama */
+    border: 1px solid #ccc; /* Kenarlık */
+}
+.grid-item-2 a{
+    color:white;
+    text-decoration: none;
+}
+
+.grid-item-3 {
+    grid-area: category;
+    background-color: black;
+    color: white;
+    margin-top: 30px;
+    border-radius: 15px 15px 0 0;
+    display: grid; /* Tüm alanı doldurması için grid yapısını kullan */
+    place-items: start;
+
+}
+.grid-item-3 td{
+    text-align: left;
+    cursor: pointer;
+    padding: 10px;
+    
+}
+.grid-item-3 table {
+    width: 100%; /* Tablonun kapsayıcıyı doldurmasını sağlar */
+
+}
+.grid-item-3 a{
+    color: white;
+    text-decoration: none;
+}
+
+.grid-item-3 .hidden-row{
+    display: none; /*Başlangıçta gizlenmesini sağlar*/
+}
+.grid-item-3 .visible-row{
+    display: table-row; /*Görünür hal*/
+}
+.grid-item-5 {
+    grid-area: login;
+    display: grid;
+    grid-template-areas:"user-info user-info"
+                        "undelivered delivered" ;
+    grid-template-columns: auto;
+    grid-template-rows: 0.5fr 5fr 5fr;
+    border-radius: 15px;   
+    border: 8;
+}
+
+.grid-item-5 .user-info{
+    grid-area: user-info;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.grid-item-5 .delivered, .undelivered{
+    justify-items: center;
+}
+
+.grid-item-5 .user-info table{
+    border: 1px solid;
+    margin: 20px;
+    width: 98%;
+    border-collapse: collapse; 
+    background-color:  rgb(127, 152, 164);
+    text-align: center;
+    border-radius: 5px;
+    border: 0.5px solid rgb(99, 118, 126);
+}
+
+.grid-item-5 .undelivered{
+    grid-area: undelivered;
+    
+}
+.grid-item-5 .undelivered table{
+    border-radius: 5px;
+    margin: 25px;
+    border-collapse: collapse;
+    background-color: white;
+    padding: 15px;
+}
+.grid-item-5 .undelivered .title{
+    font-size: 36px;
+    text-align: left;
+    background-color: rgb(181, 209, 218);
+    color: rgb(249, 249, 249);
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+}
+.grid-item-5 .undelivered .order_counter{
+    font-size: 18px;
+    text-align: left;
+    padding: 10px;
+}
+.grid-item-5 .undelivered td,tr{
+    border: 1px solid white;
+    padding: 5px;
+    
+}
+.grid-item-5 .undelivered .info{
+    text-align: end;
+}
+.grid-item-5 .undelivered img{
+    width: 100px;
+    height: 125px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+}
+.grid-item-5 .delivered{
+    grid-area: delivered;
+    
+}
+.grid-item-5 .delivered table{
+    border-radius: 5px;
+    margin: 25px;
+    border-collapse: collapse;
+    background-color: white;
+    padding: 15px;
+    opacity: 0.6;
+}
+.grid-item-5 .delivered .title{
+    font-size: 36px;
+    text-align: left;
+    background-color: rgb(181, 209, 218);
+    color: rgb(249, 249, 249);
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+}
+.grid-item-5 .delivered .order_counter{
+    font-size: 18px;
+    text-align: left;
+    padding: 10px;
+}
+.grid-item-5 .delivered td,tr{
+    border: 1px solid white;
+    padding: 5px;
+    
+}
+.grid-item-5 .delivered .info{
+    text-align: end;
+}
+.grid-item-5 .delivered img{
+    width: 100px;
+    height: 125px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+}
+
+.grid-item-6 {
+    grid-area: r-line;
+    background-color: black;
+
+}
+.grid-item-7{
+    grid-area: u-line;
+    background-color: black;
+}
+

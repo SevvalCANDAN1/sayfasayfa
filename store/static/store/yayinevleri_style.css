@@ -1,0 +1,166 @@
+html, body{
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    width: 100%; 
+    height: 100%; 
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 5fr 10fr 10fr 10fr 1fr;
+    grid-template-rows: 2fr 2fr 10fr 10fr 10fr 10fr 10fr 10fr  1fr;
+    column-gap: 10px;
+    grid-template-areas:
+        "header header header header header header"
+        "l-line category yayinevleri-title yayinevleri-title yayinevleri-title r-line"
+        "l-line category yayinevleri yayinevleri yayinevleri r-line"
+        "l-line category yayinevleri yayinevleri yayinevleri r-line"
+        "l-line category yayinevleri yayinevleri yayinevleri r-line"
+        "l-line category yayinevleri yayinevleri yayinevleri r-line"
+        "l-line category yayinevleri yayinevleri yayinevleri r-line"
+        "l-line category yayinevleri yayinevleri yayinevleri r-line"
+        "u-line u-line u-line u-line u-line u-line"
+        ;
+    
+}
+
+.grid-item-1 {
+    grid-area: l-line;
+    background-color: black;
+
+
+}
+
+.grid-item-2 {
+    grid-area: header;
+    background-color: black;
+    border-radius: 15px 15px 0 0;
+}
+.grid-item-2 input[type="text"] {
+    width: 90%; 
+    border-radius: 5px; /* Köşeleri yuvarla */
+    border: 1px solid white; /* Beyaz kenarlık */
+    color: black; /* Yazı rengi */
+}
+.rounded-input{
+    font-size: 16px; /* Metin boyutu */
+    border-radius: 15px; /* Köşe yuvarlama */
+    border: 1px solid #ccc; /* Kenarlık */
+    background-image: url('https://cdn-icons-png.flaticon.com/512/54/54481.png'); /* Arama ikonu */
+    background-size: 20px 20px; /* İkon boyutu */
+    background-repeat: no-repeat; /* İkonu tekrar etme */
+    background-position: 10px center; /* İkonun konumu */
+}
+.grid-item-2 .button {
+    font-size: 16px; /* Metin boyutu */
+    border-radius: 10px; /* Köşe yuvarlama */
+    border: 1px solid #ccc; /* Kenarlık */
+}
+.grid-item-2 a{
+    color:white;
+    text-decoration: none;
+}
+
+.grid-item-3 {
+    grid-area: category;
+    background-color: black;
+    color: white;
+    margin-top: 30px;
+    border-radius: 15px 15px 0 0;
+    display: grid; /* Tüm alanı doldurması için grid yapısını kullan */
+    place-items: start;
+    min-width: 200px; /* Minimum genişlik */
+    min-height: 300px; /* Minimum yükseklik */
+
+}
+.grid-item-3 td{
+    text-align: left;
+    cursor: pointer;
+    padding: 10px;
+    
+}
+.grid-item-3 table {
+    width: 100%; /* Tablonun kapsayıcıyı doldurmasını sağlar */
+
+}
+.grid-item-3 a{
+    color: white;
+    text-decoration: none;
+}
+
+.grid-item-3 .hidden-row{
+    display: none; /*Başlangıçta gizlenmesini sağlar*/
+}
+.grid-item-3 .visible-row{
+    display: table-row; /*Görünür hal*/
+}
+.grid-item-4 {
+    grid-area: yayinevleri-title;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 48px;
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    min-width: 100px;
+    min-height: 50px;
+    overflow: hidden;
+    
+}
+.grid-item-5 {
+    grid-area: yayinevleri;
+    display: grid;
+    justify-items: center;
+    align-items: start;
+    border-radius: 15px;  
+    
+}
+.grid-item-5 table {
+    width: 100%; 
+    border-spacing: 20px;
+
+}
+
+.grid-item-5 td {
+    width: 250px; 
+    height: auto;
+}
+
+.grid-item-5 img{
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    border-radius: 15px;
+    width: 255px;
+    height: 400px;
+    object-fit: cover;
+    display: block; 
+    
+    
+}
+
+.grid-item-5 a{
+    color: black;
+    text-decoration: none;
+    text-align: center;
+ 
+}
+.grid-item-5 button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    background-color: #444; /* İsteğe bağlı: buton arka planı */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+.grid-item-6 {
+    grid-area: r-line;
+    background-color: black;
+
+}
+.grid-item-7{
+    grid-area: u-line;
+    background-color: black;
+}
