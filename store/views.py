@@ -19,7 +19,7 @@ from datetime import datetime
 # Create your views here.
 def add_to_cart(request, book_id):
     if not request.user.is_authenticated:
-        messages.warning(request, "Sepetinize Ürün Eklemek İçin Giriş Yapmanız Gerekmektedir! Tamam tuşuna bastıktan sonra giriş sayfasına yönlendirileceksiniz. İyi alışverişler...")
+        messages.warning(request, "Sepetinize Ürün Eklemek İçin Giriş Yapmanız Gerekmektedir! İyi alışverişler...")
         return redirect('login')
     
     book = get_object_or_404(Book, id=book_id)
