@@ -1,8 +1,33 @@
-git clone https://github.com/SevvalCANDAN1/sayfasayfa.git 
+# SayfaSayfa - Django Projesi
 
-pip install django
-python manage.py migrate
-python manage.py collectstatic
-python manage.py runserver 
+Bu proje, Django ile geliştirilmiş bir web uygulamasıdır. Aşağıdaki adımları takip ederek projeyi bilgisayarınızda çalıştırabilirsiniz.
 
-üstteki komuttan sonra çıkan urli kopyalayp ulaşabilirsiniz
+## Gereksinimler
+
+- Python 3.x
+- Django
+
+## Projeyi İndirme ve Çalıştırma Adımları
+
+1. **Projeyi GitHub'dan Klonlayın:**
+
+   ```bash
+   git clone https://github.com/SevvalCANDAN1/sayfasayfa.git
+2. **Bağımlılıkları Yükleyin:**
+   ```bash
+   pip install django
+3. **Veri Tabanı Yapılandırma:**
+   ```bash
+   python manage.py migrate
+   python manage.py makemigrations
+4. **Statik Dosyaları Toplayın:**
+    ```bash
+   python manage.py collectstatic
+5. **Sunucuyu Başlatın:**
+   ```bash
+   python manage.py runserver
+6. Çıkan urli tarayıcınız yapıştırıp /store ekleyin ör -> http://127.0.0.1:8000//store
+   
+
+
+
