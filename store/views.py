@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from . models import  Book, Category, ImageOfWebSite, Author, PublishingHouse, Genre, Cart, CartItem, Order, OrderItem
-from users.views import user
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -119,7 +118,7 @@ def book_page(request, id):
     categories_of_book = book.category.all()[0]
     category_name = categories_of_book
     author = book.author_name
-    books = Book.objects.filter(category = category_name, author_name = author)[:4]
+    books = Book.objects.filter(category = category_name)[:4]
     categories = Category.objects.all()
     home_page_photo = ImageOfWebSite.objects.get(name = 'home-page-photo')
     user_icon = ImageOfWebSite.objects.get(name = 'user-icon')
@@ -338,14 +337,48 @@ def signUp_view(request):
         last = request.POST["lname"]
         mail = request.POST["mail"]
         password = request.POST["password"]
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Bu kullanıcı adı zaten alınmış. Lütfen başka bir kullanıcı adı seçin.")
+            return render(request, "store/signUp.html", {
+                "categories": categories,
+                "home_page_photo": home_page_photo,
+                "user_icon": user_icon,
+                "navigation": navigation,
+                "cart": cart,
+                "logo": logo,
+                "authors": authors,
+                "publishing_houses": publishing_houses,
+                "genres": genres
+            })
+        else:
+            User.objects.create_user(
+                username=username, 
+                first_name=first, 
+                last_name=last, 
+                email=mail, 
+                password=password
+            )
+            messages.success(request, "Kayıt işlemi başarılı!")
+            '''if User.objects.filter(username=username).exists():
+                messages.error(request, "Bu kullanıcı adı zaten alınmış. Lütfen başka bir kullanıcı adı seçin.")
+            return render(request, "store/signUp.html", {
+                "categories": categories,
+                "home_page_photo": home_page_photo,
+                "user_icon": user_icon,
+                "navigation": navigation,
+                "cart": cart,
+                "logo": logo,
+                "authors": authors,
+                "publishing_houses": publishing_houses,
+                "genres": genres
+            })
         User.objects.create_user(
             username=username, 
             first_name=first, 
             last_name=last, 
             email=mail, 
             password=password
-        )
-        user= get_object_or_404(User, username=username)
+        )'''
         return HttpResponseRedirect(reverse("login"), {
             'logo' : logo,
             'home_page_photo' : home_page_photo,

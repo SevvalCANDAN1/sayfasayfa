@@ -65,27 +65,23 @@
             </div>
         </div>
     </div>
-    <table>
-        <br>
-        <h2 style="padding: 15px; margin-top: 10px; background-color: black; color: white; border-radius: 10px; min-width: 80px; min-height: 50px; overflow: hidden;">İlginizi Çekebilecek Diğer Kitaplar :</h2>
-        <tr>
-            {% for book in books %} 
-                <td style="text-align: center; width: 150px;
-                    height: 300px; padding: 10px;">
-                    <a href="{% url 'book_page' book.id %}"><img src="{{ book.photo.url }}" alt="{{ book.book_name }} " style= 
-                    "border-radius: 15px; width: 100%;
-                    height: 100%;"></a>
+    <div class="oneriler">
+        <table>
+            <br>
+            <h2 style="padding: 15px; margin-top: 10px; background-color: black; color: white; border-radius: 10px; min-width: 80px; min-height: 50px; overflow: hidden;">İlginizi Çekebilecek Diğer Kitaplar :</h2>
+            <tr>
+                {% for book in books %} 
+                <td style="text-align: center;">
+                    <a href="{% url 'book_page' book.id %}"><img src="{{ book.photo.url }}" alt="{{ book.book_name }} "></a>
                     <br>
-                    <button style=
-                        "margin-top: 10px;
-                        padding: 10px 15px;
-                        border-radius: 15px;
-                        background-color: #444; /* İsteğe bağlı: buton arka planı */
-                        color: white;
-                        border: none;
-                        cursor: pointer;">Sepete Ekle</button>
+                    <form action="{% url 'add_to_cart' book.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Sepete Ekle</button>
+                    </form>
                 </td>
-            {% endfor %}
-        </tr>
-    </table>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+    
 {% endblock %}

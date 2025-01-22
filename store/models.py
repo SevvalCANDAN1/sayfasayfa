@@ -50,14 +50,14 @@ class Book(models.Model):
         return f"{self.book_name} "
 
 class Cart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user =  models.OneToOneField(User, on_delete=models.CASCADE, related_name='cart')
     books = models.ManyToManyField(Book, through='CartItem')
     total_quantity = models.IntegerField(default=0) #Sepetteki kitap sayısı
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default= 0.0)
 
 
     def __Str__(self):
-        return f"Cart of {self.user.username}"
+        return f" Cart of {self.user.username}"
 
     
     def save(self,*args, **kwargs):
@@ -65,7 +65,7 @@ class Cart(models.Model):
         if self.pk:  # Eğer birincil anahtar varsa (nesne kaydedildiyse)
             self.total_quantity = sum(item.quantity for item in self.cart_items.all())
             self.total_price = sum(item.total_price for item in self.cart_items.all())
-            super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
         
 
 

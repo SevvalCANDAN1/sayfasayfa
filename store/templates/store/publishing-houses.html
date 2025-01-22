@@ -93,7 +93,8 @@
                                 <a href="{% url 'publishing_house_page' publishing_house.name %}"><img src="{{ publishing_house.photo.url }}" alt="{{ publishing_house.name }} " style= 
                                 "width: 250px;
                                 height: 400px;
-                                border-radius: 15px;"></a>
+                                border-radius: 15px;
+                                object-fit: contain;"></a>
                             </td>
                             {% if forloop.counter|divisibleby:4 %}
                                 <tr></tr>

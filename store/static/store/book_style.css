@@ -106,7 +106,6 @@ html, body{
 }
 .grid-item-5 {
     grid-area: yayinevleri;
-    /*background-color: lightblue*/;
     margin-top: 30px;
     margin-left: 40px;
     margin-bottom: 20px;
@@ -114,7 +113,51 @@ html, body{
     place-items: left;
     border-radius: 15px;   
 }
+.grid-item-5 .oneriler{
+    display: grid;
+    justify-items: center;
+    align-items: start;
+    border-radius: 15px;  
+    
+}
+.grid-item-5 .oneriler table {
+    width: 100%; 
+    border-spacing: 20px;
 
+}
+
+.grid-item-5 .oneriler td {
+    width: 250px; 
+    height: auto;
+}
+
+.grid-item-5 .oneriler img{
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    border-radius: 15px;
+    width: 255px;
+    height: 400px;
+    object-fit: cover;
+    display: block; 
+    
+    
+}
+
+.grid-item-5 .oneriler a{
+    color: black;
+    text-decoration: none;
+    text-align: center;
+ 
+}
+.grid-item-5 .oneriler button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    background-color: #444; /* İsteğe bağlı: buton arka planı */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
 
 .grid-item-6 {
     grid-area: r-line;
