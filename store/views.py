@@ -32,9 +32,7 @@ def add_to_cart(request, book_id):
     if not created:  # Eğer zaten varsa, miktarı artır
         cart_item.quantity += 1
         cart_item.save()
-        messages.success(request, f"{book.book_name} sepete eklendi. (Miktar: {cart_item.quantity})")
-    else:
-        messages.success(request, f"{book.book_name} sepete eklendi.")
+        
     cart.save()
     return redirect('cart_page')
 
@@ -278,7 +276,6 @@ def order(request):
             # Siparişi oluştur
             order = Order.create_order_from_cart(cart_user)  # Order nesnesi oluşturuluyor
             
-
             # Bilgileri siparişe ekle
             order.address = request.POST["adres"]
             order.phone = request.POST["tel"]
@@ -290,7 +287,6 @@ def order(request):
             # Siparişi kaydet
             order.save()
 
-            messages.success(request, "Siparişiniz başarıyla oluşturuldu!")
             return render(request, "store/order.html", {
                 "categories": categories,
                 "home_page_photo": home_page_photo,

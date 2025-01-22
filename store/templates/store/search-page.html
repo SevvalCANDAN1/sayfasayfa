@@ -99,21 +99,14 @@
                         </tr>
                         <tr>
                             {% for book in searched_books %}
-                                <td style="text-align: center;">
-                                    <a href="{% url 'book_page' book.id %}"><img src="{{ book.photo.url }}" alt="{{ book.book_name }} " style= 
-                                    "width: 250px;
-                                    height: 400px;
-                                    border-radius: 15px;"></a>
-                                    <br>
-                                    <button style=
-                                        "margin-top: 10px;
-                                        padding: 10px 15px;
-                                        border-radius: 15px;
-                                        background-color: #444; /* İsteğe bağlı: buton arka planı */
-                                        color: white;
-                                        border: none;
-                                        cursor: pointer;">Sepete Ekle</button>
-                                </td>
+                            <td style="text-align: center;">
+                                <a href="{% url 'book_page' book.id %}"><img src="{{ book.photo.url }}" alt="{{ book.book_name }} "></a>
+                                <br>
+                                <form action="{% url 'add_to_cart' book.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" id="submit-btn">Sepete Ekle</button>
+                                </form>
+                            </td>
                                 {% if forloop.counter|divisibleby:4 %}
                                     <tr></tr>
                                 {% endif %}
