@@ -27,6 +27,13 @@ Bu proje, Django ile geliştirilmiş bir web uygulamasıdır. Aşağıdaki adım
    ```bash
    python manage.py runserver
 6. Çıkan urli tarayıcınız yapıştırıp /store ekleyin ör -> http://127.0.0.1:8000//store
+
+   
+# Projenin CSS ve JavaScript Kod Dosyaları:
+   - store/static/store
+# Projenin HTML Kodları:
+   - store/templates/store
+
    
 
 
