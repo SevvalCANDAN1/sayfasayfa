@@ -26,7 +26,7 @@ Bu proje, Django ile geliştirilmiş bir web uygulamasıdır. Aşağıdaki adım
 5. **Sunucuyu Başlatın:**
    ```bash
    python manage.py runserver
-6. Çıkan urli tarayıcınız yapıştırıp /store ekleyin ör -> http://127.0.0.1:8000//store
+6. Çıkan urli tarayıcınız yapıştırıp /store ekleyin ör -> http://127.0.0.1:8000/store
 
    
 # Projenin CSS ve JavaScript Kod Dosyaları:
