@@ -23,13 +23,12 @@ def add_to_cart(request, book_id):
     
     book = get_object_or_404(Book, id=book_id)
     
-    # Kullanıcının aktif sepetini kontrol et veya oluştur
+    
     cart, created = Cart.objects.get_or_create(user=request.user)
     
-    # Sepette bu kitabı kontrol et
     cart_item, created = CartItem.objects.get_or_create(cart=cart, book=book)
     
-    if not created:  # Eğer zaten varsa, miktarı artır
+    if not created:  
         cart_item.quantity += 1
         cart_item.save()
         
@@ -71,7 +70,7 @@ def cart_page(request):
         authors = Author.objects.all()
         publishing_houses = PublishingHouse.objects.all()
         genres = Genre.objects.all()
-        cart_user = Cart.objects.filter(user=request.user).first()  # Kullanıcıya ait cart'ı al
+        cart_user = Cart.objects.filter(user=request.user).first() 
         cart_items = cart_user.cart_items.all() if cart_user else [] 
         return render(request, "store/cart.html", {
             'categories': categories,
@@ -142,7 +141,7 @@ def book_page(request, id):
 
 def category_page(request, name):
     category_name = get_object_or_404(Category, name = name)
-    categories = Category.objects.filter()  # Kategorileri alın
+    categories = Category.objects.filter() 
     books = Book.objects.filter(category=category_name)
     home_page_photo = ImageOfWebSite.objects.get(name = 'home-page-photo')
     user_icon = ImageOfWebSite.objects.get(name = 'user-icon')
@@ -269,14 +268,14 @@ def order(request):
     authors = Author.objects.all()
     publishing_houses = PublishingHouse.objects.all()
     genres = Genre.objects.all()
-    cart_user = Cart.objects.filter(user=request.user).first()  # Kullanıcıya ait cart'ı al
+    cart_user = Cart.objects.filter(user=request.user).first()  
     cart_items = cart_user.cart_items.all() if cart_user else [] 
     if request.method == "POST":
         if cart_user and cart_items.exists():
-            # Siparişi oluştur
-            order = Order.create_order_from_cart(cart_user)  # Order nesnesi oluşturuluyor
             
-            # Bilgileri siparişe ekle
+            order = Order.create_order_from_cart(cart_user)  
+            
+            
             order.address = request.POST["adres"]
             order.phone = request.POST["tel"]
             order.c_name = request.POST["cart-name"]
@@ -355,26 +354,6 @@ def signUp_view(request):
                 password=password
             )
             messages.success(request, "Kayıt işlemi başarılı!")
-            '''if User.objects.filter(username=username).exists():
-                messages.error(request, "Bu kullanıcı adı zaten alınmış. Lütfen başka bir kullanıcı adı seçin.")
-            return render(request, "store/signUp.html", {
-                "categories": categories,
-                "home_page_photo": home_page_photo,
-                "user_icon": user_icon,
-                "navigation": navigation,
-                "cart": cart,
-                "logo": logo,
-                "authors": authors,
-                "publishing_houses": publishing_houses,
-                "genres": genres
-            })
-        User.objects.create_user(
-            username=username, 
-            first_name=first, 
-            last_name=last, 
-            email=mail, 
-            password=password
-        )'''
         return HttpResponseRedirect(reverse("login"), {
             'logo' : logo,
             'home_page_photo' : home_page_photo,

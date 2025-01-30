@@ -7,20 +7,20 @@ html, body {
 }
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 5fr 10fr 10fr 10fr 1fr; /* Orantılı genişlikler */
+    grid-template-columns: 1fr 5fr 10fr 10fr 10fr 1fr;
     grid-template-rows: 100px auto auto auto auto auto auto auto 30px; 
     width: 100%; 
     height: 100%;
     column-gap: 10px;
     grid-template-areas:
         "header header header header header header"
-        "l-line category yayinevleri-title yayinevleri-title yayinevleri-title r-line"
-        "l-line category yayinevleri yayinevleri form r-line"
-        "l-line category yayinevleri yayinevleri form r-line"
-        "l-line category yayinevleri yayinevleri form r-line"
-        "l-line category yayinevleri yayinevleri form r-line"
-        "l-line category yayinevleri yayinevleri form r-line"
-        "l-line category yayinevleri yayinevleri form r-line"
+        "l-line category cart-name cart-name cart-name r-line"
+        "l-line category cart cart form r-line"
+        "l-line category cart cart form r-line"
+        "l-line category cart cart form r-line"
+        "l-line category cart cart form r-line"
+        "l-line category cart cart form r-line"
+        "l-line category cart cart form r-line"
         "u-line u-line u-line u-line u-line u-line"
         ;
     
@@ -97,7 +97,7 @@ html, body {
     display: table-row; /*Görünür hal*/
 }
 .grid-item-4 {
-    grid-area: yayinevleri-title;
+    grid-area: cart-name;
     padding: 15px;
     margin-top: 10px;
     font-size: 48px;
@@ -110,7 +110,7 @@ html, body {
     
 }
 .grid-item-5 {
-    grid-area: yayinevleri;
+    grid-area: cart;
     display: grid;
     place-items: start ;
     justify-items: start;

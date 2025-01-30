@@ -40,23 +40,23 @@ html, body{
 }
 .grid-item-2 input[type="text"] {
     width: 90%; 
-    border-radius: 5px; /* Köşeleri yuvarla */
-    border: 1px solid white; /* Beyaz kenarlık */
-    color: black; /* Yazı rengi */
+    border-radius: 5px; 
+    border: 1px solid white; 
+    color: black; 
 }
 .rounded-input{
-    font-size: 16px; /* Metin boyutu */
-    border-radius: 15px; /* Köşe yuvarlama */
-    border: 1px solid #ccc; /* Kenarlık */
-    background-image: url('https://cdn-icons-png.flaticon.com/512/54/54481.png'); /* Arama ikonu */
-    background-size: 20px 20px; /* İkon boyutu */
-    background-repeat: no-repeat; /* İkonu tekrar etme */
-    background-position: 10px center; /* İkonun konumu */
+    font-size: 16px; 
+    border-radius: 15px;
+    border: 1px solid #ccc; 
+    background-image: url('https://cdn-icons-png.flaticon.com/512/54/54481.png'); 
+    background-size: 20px 20px;
+    background-repeat: no-repeat; 
+    background-position: 10px center;
 }
 .grid-item-2 .button {
-    font-size: 16px; /* Metin boyutu */
-    border-radius: 10px; /* Köşe yuvarlama */
-    border: 1px solid #ccc; /* Kenarlık */
+    font-size: 16px; 
+    border-radius: 10px; 
+    border: 1px solid #ccc;
 }
 .grid-item-2 a{
     color:white;
@@ -69,10 +69,10 @@ html, body{
     color: white;
     margin-top: 30px;
     border-radius: 15px 15px 0 0;
-    display: grid; /* Tüm alanı doldurması için grid yapısını kullan */
+    display: grid; 
     place-items: start;
-    min-width: 200px; /* Minimum genişlik */
-    min-height: 800px; /* Minimum yükseklik */
+    min-width: 200px; 
+    min-height: 800px; 
 
 }
 .grid-item-3 td{
@@ -82,7 +82,7 @@ html, body{
     
 }
 .grid-item-3 table {
-    width: 100%; /* Tablonun kapsayıcıyı doldurmasını sağlar */
+    width: 100%; 
 
 }
 .grid-item-3 a{
@@ -91,10 +91,10 @@ html, body{
 }
 
 .grid-item-3 .hidden-row{
-    display: none; /*Başlangıçta gizlenmesini sağlar*/
+    display: none; 
 }
 .grid-item-3 .visible-row{
-    display: table-row; /*Görünür hal*/
+    display: table-row; 
 }
 .grid-item-4 {
     grid-area: login-tittle;

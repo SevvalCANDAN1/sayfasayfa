@@ -89,7 +89,6 @@
                     padding: 10px; ">
                     <tr>
                         {% if cart_items %}
-                            <!-- Sepetteki öğeleri listele -->
                             <table >
                                 <tr>
                                     <td>Kitap Resmi:</td>
@@ -140,7 +139,12 @@
                                         
                                         <td>{{ item.total_price }}</td>
                                     </tr>
+                                    
                             {% endfor %}
+                                <tr>
+                                    <td>Toplam Fiyat:</td>
+                                    <td colspan="3">{{ cart_user.total_price }}</td>
+                                </tr>
                             {% else %}
                             <tr>
                                 <td><b>Sepetinizde Ürün Bulunmamaktadır.</b></td>

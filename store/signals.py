@@ -5,5 +5,5 @@ from .models import Cart
 
 @receiver(post_save, sender=User)
 def create_cart_for_new_user(sender, instance, created, **kwargs):
-    if created:  # Sadece yeni bir kullanıcı oluşturulursa çalışsın
+    if created:  
         Cart.objects.create(user=instance)

@@ -40,8 +40,8 @@ html, body{
 }
 .grid-item-2 input[type="text"] {
     width: 90%; 
-    border-radius: 5px; /* Köşeleri yuvarla */
-    border: 1px solid white; /* Beyaz kenarlık */
+    border-radius: 5px; 
+    border: 1px solid white; 
     color: black; /* Yazı rengi */
 }
 .rounded-input{
@@ -163,7 +163,7 @@ html, body{
     margin-top: 10px;
     padding: 10px 15px;
     border-radius: 15px;
-    background-color: #444; /* İsteğe bağlı: buton arka planı */
+    background-color: #444; 
     color: white;
     border: none;
     cursor: pointer;

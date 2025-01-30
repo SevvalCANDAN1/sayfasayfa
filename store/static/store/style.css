@@ -100,8 +100,6 @@
     /*display: grid;*/
     place-items: center;
     border-radius: 15px;
-    
-
 }
 
 .grid-item-5 {
@@ -130,22 +128,19 @@
     width: 255px;
     height: 400px;
     object-fit: cover;
-    display: block; 
-    
-    
+    display: block;   
 }
 
 .grid-item-5 a{
     color: black;
     text-decoration: none;
     text-align: center;
- 
 }
 .grid-item-5 button {
     margin-top: 10px;
     padding: 10px 15px;
     border-radius: 15px;
-    background-color: #444; /* İsteğe bağlı: buton arka planı */
+    background-color: #444; 
     color: white;
     border: none;
     cursor: pointer;
