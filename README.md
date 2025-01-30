@@ -1,5 +1,5 @@
 # SayfaSayfa - Django Projesi
-
+video : https://youtu.be/DqM9K99lVxo
 Bu proje, Django ile geliştirilmiş bir web uygulamasıdır. Aşağıdaki adımları takip ederek projeyi bilgisayarınızda çalıştırabilirsiniz.
 
 ## Gereksinimler
