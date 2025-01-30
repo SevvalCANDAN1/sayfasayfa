@@ -31,6 +31,10 @@ Bu proje, Django ile geliştirilmiş bir web uygulamasıdır. Aşağıdaki adım
 # Projenin HTML Kodları:
    - store/templates/store
 
+
+#Veri Tabanı Dosyası
+- db.sqlite3
+
    
 
 
